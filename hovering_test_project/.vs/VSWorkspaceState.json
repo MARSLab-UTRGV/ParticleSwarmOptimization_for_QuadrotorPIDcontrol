@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\controllers",
+    "\\controllers\\fitness_repair_PID_exp",
+    "\\controllers\\PID_params_exp_PSO",
+    "\\controllers\\postTuned_Nav",
+    "\\controllers\\PSO_for_PIDparams_v1",
+    "\\controllers\\PSO_for_Pitch_supervisor",
+    "\\python_utilities"
+  ],
+  "SelectedNode": "\\controllers\\postTuned_Nav\\postTuned_Nav.py",
+  "PreviewInSolutionExplorer": false
+}

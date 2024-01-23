@@ -1,0 +1,94 @@
+#VRML_SIM R2023a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/factory/manhole/protos/SquareManhole.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/robots/dji/mavic/protos/Mavic2Pro.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/robots/bitcraze/crazyflie/protos/Crazyflie.proto"
+
+WorldInfo {
+  basicTimeStep 16
+}
+DEF viewpoint Viewpoint {
+  orientation -0.5773502691896258 0.5773502691896258 0.5773502691896258 2.0944
+  position 4.603359714792597 1.0780168468351894 35.06807810171547
+  follow "Mavic 2 PRO"
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorSize 200 200
+  floorTileSize 1 1
+  wallHeight 5
+}
+SquareManhole {
+  translation 8 0 0
+}
+Solid {
+  translation 7.6 2.5 2
+  scale 2 2 2
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1 0.941176 0.0901961
+        metalness 0
+      }
+      geometry Sphere {
+        radius 0.1
+      }
+      castShadows FALSE
+    }
+  ]
+  name "waypoint1"
+}
+SquareManhole {
+  name "manhole(2)"
+}
+SquareManhole {
+  translation -8 0 0
+  name "manhole(1)"
+}
+DEF mavic2pro Mavic2Pro {
+  translation -0.005097419929714686 -1.809655144968792e-05 0.11558434705098194
+  rotation 9.71835824715874e-06 -0.9999976263129131 -0.0021788240160541235 0.07008554930515294
+  controller "hover_pitch_exp_PSO"
+  window "<none>"
+  supervisor TRUE
+  bodySlot [
+    Accelerometer {
+    }
+  ]
+  cameraSlot [
+    Receiver {
+      name "mavic_rcvr"
+      channel 1
+    }
+    Emitter {
+      name "mavic_emtr"
+      channel 1
+    }
+    Camera {
+      width 400
+      height 240
+    }
+  ]
+}
+Crazyflie {
+  translation -8 -9.035155392807467e-18 0.06499018999999936
+  rotation -0.17820098362958556 0.9836666568399031 0.025383412986761333 2.7067848639396645e-15
+  controller "PSO_for_Pitch_supervisor"
+  supervisor TRUE
+  extensionSlot [
+    Receiver {
+      name "super_rcvr"
+      channel 1
+    }
+    Emitter {
+      name "super_emtr"
+      channel 1
+    }
+  ]
+}
